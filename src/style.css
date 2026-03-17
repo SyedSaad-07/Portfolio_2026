@@ -3,8 +3,8 @@
   --bg-card: #161b22;
   --bg-elevated: #21262d;
   --border: #30363d;
-  --text: #c9d1d9;
-  --text-dim: #8b949e;
+  --text: #f6f8fa;
+  --text-dim: #e6edf3;
   --accent-green: #3fb950;
   --accent-cyan: #58a6ff;
   --accent-purple: #a371f7;
@@ -213,18 +213,21 @@ body::before {
 .skill-orb {
   padding: 12px 20px;
   background: var(--bg-card);
+  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
   font-family: var(--font-mono);
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(63, 185, 80, 0.25), 0 0 40px rgba(63, 185, 80, 0.15);
+  text-shadow: 0 0 8px rgba(63, 185, 80, 0.3);
 }
 
 .skill-orb:hover {
   border-color: var(--accent-green);
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 24px var(--glow);
+  box-shadow: 0 0 16px rgba(63, 185, 80, 0.25), 0 8px 24px var(--glow);
 }
 
 .skill-orb.active {

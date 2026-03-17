@@ -27,6 +27,7 @@ export function initTypewriter(): void {
   const PAUSE_BETWEEN_PHRASES = 500
 
   function type(): void {
+    if (!el) return
     const phrase = PHRASES[phraseIndex]
     if (!phrase) return
     currentPhrase = phrase
@@ -43,7 +44,7 @@ export function initTypewriter(): void {
       }
     } else {
       charIndex++
-      el.textContent = phrase.slice(0, charIndex)
+      if (el) el.textContent = phrase.slice(0, charIndex)
       if (charIndex === phrase.length) {
         isDeleting = true
         setTimeout(type, PAUSE_BEFORE_DELETE)

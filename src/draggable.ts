@@ -72,7 +72,7 @@ export function initDraggableWindows(): void {
       isDragging = false
       document.removeEventListener('mousemove', onMove as EventListener)
       document.removeEventListener('mouseup', onUp)
-      document.removeEventListener('touchmove', onMove as EventListener, { passive: false })
+      document.removeEventListener('touchmove', onMove as EventListener)
       document.removeEventListener('touchend', onUp)
     }
 

@@ -94,10 +94,26 @@ body::before {
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.2s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-green);
+  transition: width 0.25s ease;
 }
 
 .nav-link:hover {
   color: var(--accent-green);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 /* Hero */
@@ -105,6 +121,7 @@ body::before {
   padding: 80px 0 60px;
   display: flex;
   justify-content: center;
+  opacity: 0;
 }
 
 .hero-terminal {
@@ -118,6 +135,11 @@ body::before {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.terminal-window:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 .terminal-header {
@@ -188,6 +210,7 @@ body::before {
 /* Sections */
 .section {
   padding: 60px 0;
+  opacity: 0;
 }
 
 .section-title {
@@ -271,10 +294,24 @@ body::before {
   margin-bottom: 8px;
 }
 
-.project-content p {
+.project-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.project-points li {
   color: var(--text-dim);
-  margin-bottom: 12px;
   line-height: 1.5;
+  padding: 4px 0 4px 16px;
+  position: relative;
+}
+
+.project-points li::before {
+  content: '•';
+  color: var(--accent-green);
+  position: absolute;
+  left: 0;
 }
 
 .project-tags {
@@ -339,6 +376,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #fff;
   padding: 10px 16px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
@@ -385,14 +423,20 @@ body::before {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .command-palette.open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .command-palette-inner {
@@ -423,11 +467,12 @@ body::before {
   padding: 12px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s ease;
 }
 
 .command-palette-item:hover {
   background: var(--bg-elevated);
+  transform: translateX(6px);
 }
 
 .command-palette-item kbd {
@@ -734,4 +779,14 @@ body::before {
 .terminal-output {
   overflow-x: auto;
   overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .section {
+    opacity: 1 !important;
+  }
+  .command-palette-item {
+    transition-duration: 0.01ms !important;
+  }
 }

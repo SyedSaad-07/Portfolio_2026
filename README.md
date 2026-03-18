@@ -1,6 +1,6 @@
 # Saad's Playground Portfolio
 
-An engaging, interactive portfolio built with a terminal/playground aesthetic — perfect for showcasing backend engineering skills.
+An engaging, interactive portfolio built with **React** and a terminal/playground aesthetic — perfect for showcasing backend engineering skills.
 
 ## Features
 
@@ -28,8 +28,8 @@ npm run preview
 
 ## Customize
 
-- **Contact links** — Edit `src/commands.ts` and replace URLs (GitHub, LinkedIn, email)
-- **Projects** — Edit the `PROJECTS` array in `src/draggable.ts`
-- **Skills** — Edit the `SKILLS` array in `src/skills.ts`
-- **Typewriter phrases** — Edit `PHRASES` in `src/typewriter.ts`
-- **Experience** — Update the timeline in `src/main.ts` (experience section)
+- **Contact links** — Edit `src/components/Contact.tsx` and replace URLs (GitHub, LinkedIn, email)
+- **Projects** — Edit the `PROJECTS` array in `src/components/Projects.tsx`
+- **Skills** — Edit the `SKILLS` array in `src/components/Skills.tsx`
+- **Typewriter phrases** — Edit `PHRASES` in `src/components/Hero.tsx`
+- **Experience** — Update the timeline in `src/components/Experience.tsx`

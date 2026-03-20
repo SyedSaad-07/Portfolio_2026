@@ -25,30 +25,30 @@ export default function Contact() {
   }
 
   return (
-    <div className="terminal-window contact-terminal">
-      <div className="terminal-header">
-        <span className="dot red" />
-        <span className="dot yellow" />
-        <span className="dot green" />
-        <span className="terminal-title">contact.sh</span>
+    <div className="max-w-[500px] max-md:max-w-none bg-card border border-border rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]">
+      <div className="flex items-center gap-2 px-4 py-3 bg-elevated border-b border-border">
+        <span className="w-3 h-3 rounded-full bg-accent-red" />
+        <span className="w-3 h-3 rounded-full bg-accent-orange" />
+        <span className="w-3 h-3 rounded-full bg-accent-green" />
+        <span className="ml-3 font-mono text-sm text-text-dim">contact.sh</span>
       </div>
-      <div className="terminal-body">
-        <div className="contact-commands">
+      <div className="p-6 font-mono text-[0.95rem]">
+        <div className="flex flex-col gap-3">
           {CONTACT_COMMANDS.map(({ cmd, label }) => (
             <button
               key={cmd}
               type="button"
-              className="contact-cmd"
+              className="flex items-center gap-2 px-4 py-2.5 bg-elevated border border-border rounded-lg cursor-pointer transition-all duration-200 text-white hover:border-accent-green hover:translate-x-1 max-md:py-3.5 max-md:min-h-12"
               onClick={() => handleClick(cmd)}
             >
-              <span className="prompt">$</span>
+              <span className="text-accent-green">$</span>
               <span>{label}</span>
             </button>
           ))}
         </div>
         {output && (
-          <div className="terminal-output" id="contact-output">
-            <div className="output-line success">{output}</div>
+          <div className="terminal-output mt-4" id="contact-output">
+            <div className="py-1 text-accent-green">{output}</div>
           </div>
         )}
       </div>

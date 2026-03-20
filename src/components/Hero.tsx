@@ -58,24 +58,24 @@ export default function Hero() {
   }, [])
 
   return (
-    <div className="terminal-window hero-terminal" onClick={runCommand}>
-      <div className="terminal-header">
-        <span className="dot red" />
-        <span className="dot yellow" />
-        <span className="dot green" />
-        <span className="terminal-title">saad@playground:~</span>
+    <div className="hero-terminal w-full max-w-[700px] bg-card border border-border rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] cursor-pointer" onClick={runCommand}>
+      <div className="flex items-center gap-2 px-4 py-3 bg-elevated border-b border-border">
+        <span className="w-3 h-3 rounded-full bg-accent-red" />
+        <span className="w-3 h-3 rounded-full bg-accent-orange" />
+        <span className="w-3 h-3 rounded-full bg-accent-green" />
+        <span className="ml-3 font-mono text-sm text-text-dim">saad@playground:~</span>
       </div>
-      <div className="terminal-body">
-        <div className="terminal-line">
-          <span className="prompt">$</span>
-          <span className="command">{text}</span>
-          <span className="cursor">|</span>
+      <div className="p-6 font-mono text-[0.95rem]">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="text-accent-green">$</span>
+          <span className="text-text">{text}</span>
+          <span className="text-accent-green cursor-blink">|</span>
         </div>
         <div className="terminal-output" id="hero-output">
-          <div className="output-line success">✓ Backend Engineer • 3 years experience</div>
-          <div className="output-line">Node.js • SQL • NoSQL • Redis • Docker • CI/CD</div>
+          <div className="py-1 text-accent-green">✓ Backend Engineer • 3 years experience</div>
+          <div className="py-1 text-text-dim">Node.js • SQL • NoSQL • Redis • Docker • CI/CD</div>
           {outputs.map((line, i) => (
-            <div key={i} className="output-line success">{line}</div>
+            <div key={i} className="py-1 text-accent-green">{line}</div>
           ))}
         </div>
       </div>

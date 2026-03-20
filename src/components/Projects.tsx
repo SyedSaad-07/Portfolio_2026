@@ -58,7 +58,7 @@ export default function Projects() {
   }, [isInView])
 
   return (
-    <div className="windows-container" ref={containerRef}>
+    <div className="flex flex-wrap gap-5 min-h-[300px] max-lg:gap-4 max-md:min-h-0" ref={containerRef}>
       {PROJECTS.map((p) => (
         <ProjectCard key={p.title} project={p} />
       ))}

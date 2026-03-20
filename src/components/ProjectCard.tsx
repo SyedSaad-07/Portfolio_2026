@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   }, [])
 
   const handleMouseDown = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    if (!(e.target as HTMLElement).closest('.terminal-header')) return
+    if (!(e.target as HTMLElement).closest('[data-drag-handle]')) return
     const coords = getClientCoords(e.nativeEvent)
     startRef.current = { x: coords.x - offsetRef.current.x, y: coords.y - offsetRef.current.y }
 
@@ -48,27 +48,26 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       ref={cardRef}
-      className="project-window terminal-window"
-      style={{ position: 'relative' }}
+      className="relative w-80 min-h-[220px] cursor-grab select-none active:cursor-grabbing max-lg:w-[calc(50%-8px)] max-lg:min-w-[280px] max-md:w-full max-md:min-w-0 max-md:min-h-[200px] bg-card border border-border rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
       onMouseDown={handleMouseDown}
       onTouchStart={handleMouseDown}
     >
-      <div className="terminal-header">
-        <span className="dot red" />
-        <span className="dot yellow" />
-        <span className="dot green" />
-        <span className="terminal-title">{project.title}.js</span>
+      <div data-drag-handle className="flex items-center gap-2 px-4 py-3 bg-elevated border-b border-border cursor-grab max-md:touch-none">
+        <span className="w-3 h-3 rounded-full bg-accent-red" />
+        <span className="w-3 h-3 rounded-full bg-accent-orange" />
+        <span className="w-3 h-3 rounded-full bg-accent-green" />
+        <span className="ml-3 font-mono text-sm text-text-dim truncate max-w-[calc(100vw-100px)]">{project.title}.js</span>
       </div>
-      <div className="project-content">
-        <h3>{project.title}</h3>
-        <ul className="project-points">
+      <div className="p-5 text-sm max-md:p-4 max-md:text-[0.85rem] max-sm:p-3.5">
+        <h3 className="font-mono text-base text-accent-cyan mb-2 max-md:text-[0.95rem]">{project.title}</h3>
+        <ul className="project-points list-none p-0 mb-3">
           {project.points.map((point, i) => (
-            <li key={i}>{point}</li>
+            <li key={i} className="text-text-dim leading-relaxed py-1 pl-4 relative">{point}</li>
           ))}
         </ul>
-        <div className="project-tags">
+        <div className="flex flex-wrap gap-2">
           {project.tags.map((t) => (
-            <span key={t} className="project-tag">{t}</span>
+            <span key={t} className="px-2.5 py-1 bg-elevated rounded font-mono text-xs text-text-dim max-sm:text-[0.7rem]">{t}</span>
           ))}
         </div>
       </div>

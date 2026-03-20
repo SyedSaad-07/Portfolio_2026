@@ -67,23 +67,23 @@ export default function CommandPalette({ open, onClose }: CommandPaletteProps) {
   return createPortal(
     <div
       ref={backdropRef}
-      className="command-palette open"
+      className="command-palette open fixed inset-0 bg-black/80 flex items-center justify-center z-[1000]"
       onClick={(e) => e.target === e.currentTarget && onClose()}
       role="dialog"
       aria-modal="true"
       aria-label="Command palette"
     >
-      <div className="command-palette-inner" ref={innerRef} onClick={(e) => e.stopPropagation()}>
-        <h3>Keyboard shortcuts</h3>
-        <div className="command-palette-list" ref={listRef}>
+      <div className="command-palette-inner bg-card border border-border rounded-xl p-6 w-[90%] max-w-[500px] max-md:p-5 max-md:mx-4" ref={innerRef} onClick={(e) => e.stopPropagation()}>
+        <h3 className="font-mono mb-4 text-base">Keyboard shortcuts</h3>
+        <div className="command-palette-list flex flex-col gap-2" ref={listRef}>
           {SHORTCUTS.map(({ key, action, label }) => (
             <button
               key={action}
               type="button"
-              className="command-palette-item"
+              className="command-palette-item flex items-center gap-3 px-3 py-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-elevated hover:translate-x-1.5"
               onClick={() => handleSelect(action)}
             >
-              <kbd>{key}</kbd>
+              <kbd className="px-2 py-0.5 bg-dark rounded font-mono text-xs">{key}</kbd>
               <span>{label}</span>
             </button>
           ))}

@@ -39,11 +39,11 @@ export default function Skills() {
   }, [isInView])
 
   return (
-    <div className="skills-grid" ref={gridRef}>
+    <div className="flex flex-wrap gap-4 justify-center" ref={gridRef}>
       {SKILLS.map((s) => (
         <button
           key={s.name}
-          className={`skill-orb ${activeSkill === s.name ? 'active' : ''}`}
+          className={`skill-orb px-5 py-3 bg-card text-text border border-border rounded-lg font-mono text-sm cursor-pointer transition-all duration-300 ease-in-out hover:border-accent-green hover:-translate-y-1 hover:scale-[1.02] ${activeSkill === s.name ? 'border-accent-cyan bg-elevated' : ''}`}
           onClick={() => setActiveSkill(activeSkill === s.name ? null : s.name)}
         >
           {s.name}

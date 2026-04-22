@@ -26,7 +26,7 @@ export default function Nav() {
   return (
     <nav ref={navRef} className="relative flex justify-between items-center py-5 border-b border-border">
       <div className="flex items-center gap-2">
-        <span className="text-accent-green font-mono">$</span>
+        <span className="text-accent-green font-mono font-bold">S</span>
         <span className="font-mono font-semibold text-[1.1rem]">saad.dev</span>
       </div>
       <button
